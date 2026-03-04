@@ -1,9 +1,12 @@
 import { useState } from "react";
 import "../styles/LoginPage.css";
+import showPasswordImg from "../assets/show-password.png";
+import hidePasswordImg from "../assets/hide-password.png";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, toggleShowPassword] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -35,11 +38,17 @@ export default function LoginPage() {
             <div className="login-password">
               <div>
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
+                />
+                <img
+                  id="password-img"
+                  src={showPassword ? hidePasswordImg : showPasswordImg}
+                  alt="Show password img"
+                  onClick={() => toggleShowPassword((prev) => !prev)}
                 />
               </div>
             </div>
@@ -51,7 +60,7 @@ export default function LoginPage() {
 
         <div className="login-footer">
           <a href="#">Register</a>
-          <a href="#">Forgot Password?</a>
+          <a href="#">Forgotten Password?</a>
         </div>
       </div>
     </div>

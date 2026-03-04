@@ -44,7 +44,7 @@ body {
   }
 }
 
-@media (min-width: 350px) {
+@media (min-width: 400px) {
    .login-footer {
     display: flex;
     align-items: center;
@@ -84,7 +84,7 @@ body {
     padding-bottom: 1rem;
 }
 
-.login-input input {
+.login-input input, .login-password input {
     width: 100%;
     border-radius: 1.5rem;
     font-size: 18px;
@@ -95,17 +95,26 @@ body {
     border: 1px solid #ccc
 }
 
-.login-password input {
-    width: 100%;
-    border-radius: 1.5rem;
-    font-size: 18px;
-    background-color: white;
-    color: black;
-    box-sizing: border-box;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    display: flex;
+.login-password > div {
     position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.login-password input {
+    padding-right: 3rem;
+}
+
+#password-img {
+    position: absolute;
+    right: 1rem;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+#password-img:hover {
+    cursor: pointer;
 }
 
 .login-container h1 {
