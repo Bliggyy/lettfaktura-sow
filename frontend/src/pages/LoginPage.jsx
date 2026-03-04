@@ -27,6 +27,7 @@ export default function LoginPage() {
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email address"
                 required
               />
             </div>
@@ -42,6 +43,7 @@ export default function LoginPage() {
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Password"
                   required
                 />
                 <img
