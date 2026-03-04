@@ -10,8 +10,8 @@ export default function LoginPage() {
   };
 
   return (
-    <div>
-      <div>
+    <div className="login-page">
+      <div className="login-container">
         <h1>Login</h1>
         <form onSubmit={handleLogin}>
           <div className="form-group">

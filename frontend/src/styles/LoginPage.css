@@ -1,0 +1,25 @@
+.login-page {
+    background-image: url("https://storage.123fakturera.se/public/wallpapers/sverige43.jpg");
+    width: 100%;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+}
+
+.login-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 10%;
+    background-color: white;
+    color: black;
+}
+
+.login-container h1 {
+    color: red;
+}
