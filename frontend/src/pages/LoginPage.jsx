@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "../styles/LoginPage.css";
 
 export default function LoginPage() {
@@ -12,36 +12,46 @@ export default function LoginPage() {
   return (
     <div className="login-page">
       <div className="login-container">
-        <h1>Login</h1>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleLogin} className="login-form">
+          <h1 className="login-header">Log in</h1>
           <div className="form-group">
-            <label htmlFor="email">Email Address</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+            <div className="form-label">
+              <label htmlFor="email">Enter your email address</label>
+            </div>
+            <div className="login-input">
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
           </div>
-
           <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+            <div className="form-label">
+              <label htmlFor="password">Enter your password</label>
+            </div>
+            <div className="login-password">
+              <div>
+                <input
+                  type="password"
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
           </div>
-
-          <button type="submit">Login</button>
+          <div className="button-container">
+            <button type="submit">Log in</button>
+          </div>
         </form>
 
-        <div>
-          <a>Register</a>
-          <a>Forgot Password?</a>
+        <div className="login-footer">
+          <a href="#">Register</a>
+          <a href="#">Forgot Password?</a>
         </div>
       </div>
     </div>

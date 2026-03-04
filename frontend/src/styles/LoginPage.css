@@ -1,3 +1,10 @@
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  display: block;
+}
+
 .login-page {
     background-image: url("https://storage.123fakturera.se/public/wallpapers/sverige43.jpg");
     width: 100%;
@@ -10,16 +17,110 @@
 
 .login-container {
     display: grid;
-    justify-content: center;
     align-items: center;
-    width: 50%;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    max-width: 500px;
+    margin-top: 2rem;
     background-color: white;
     color: black;
+    font-weight: 500;
+    border-radius: 25px;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    padding-bottom: 2.5rem;
+    box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .login-container {
+    width: 60%;
+    margin-top: 5%;
+  }
+
+  .login-header {
+    font-size: 2.5rem
+  }
+}
+
+@media (min-width: 350px) {
+   .login-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    width: 80%;
+  } 
+}
+
+
+.login-header {
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-label {
+    margin-bottom: 1%;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.button-container button {
+    background-color: #07a31f;
+    border: none;
+    border-radius: 1.5rem;
+    width: 60%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.login-input input {
+    width: 100%;
+    border-radius: 1.5rem;
+    font-size: 18px;
+    background-color: white;
+    color: black;
+    box-sizing: border-box;
+    padding: 1rem;
+    border: 1px solid #ccc
+}
+
+.login-password input {
+    width: 100%;
+    border-radius: 1.5rem;
+    font-size: 18px;
+    background-color: white;
+    color: black;
+    box-sizing: border-box;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    display: flex;
+    position: relative;
 }
 
 .login-container h1 {
     color: red;
+}
+
+.login-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    width: 80%;
+}
+
+.login-footer a {
+    color: black;
+    text-decoration: solid;
 }
