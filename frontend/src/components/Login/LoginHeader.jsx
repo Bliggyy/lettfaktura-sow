@@ -10,6 +10,9 @@ export default function Navbar() {
   const languageRef = useClickAway(() => {
     toggleLanguageMenu(false);
   });
+  const hamburgerRef = useClickAway(() => {
+    setMenuOpen(false);
+  });
 
   const navLinks = ["Home", "Order", "Our Customers", "About us", "Contact Us"];
   const supportedLanguages = [
@@ -45,6 +48,7 @@ export default function Navbar() {
             className={`hamburger ${menuOpen ? "open" : ""}`}
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label="Toggle menu"
+            ref={hamburgerRef}
           >
             <span />
             <span />
