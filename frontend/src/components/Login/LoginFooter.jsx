@@ -8,17 +8,17 @@ export default function Footer() {
       <div className="footer-inner">
         <div className="footer-top">
           <span className="footer-brand">123 Fakturera</span>
-          <ul className="footer-links">
+          <div className="footer-links">
             {footerLinks.map((link) => (
-              <li key={link}>
-                <a href="#">{link}</a>
-              </li>
+              <a key={link} href="#">
+                {link}
+              </a>
             ))}
-          </ul>
+          </div>
         </div>
         <hr className="footer-divider" />
         <p className="footer-copyright">
-          © {new Date().getFullYear()} 123Fakturera. All rights reserved.
+          © Lättfaktura, CRO no. 638537, 2025. All rights reserved.
         </p>
       </div>
     </footer>

@@ -1,18 +1,26 @@
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  display: block;
+.login-main {
+    flex: 1;
 }
 
 .login-page {
-    background-image: url("https://storage.123fakturera.se/public/wallpapers/sverige43.jpg");
     width: 100%;
     min-height: 100vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-page::before {
+    background-image: url("https://storage.123fakturera.se/public/wallpapers/sverige43.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     position: fixed;
+    inset: 0;
+    content: "";
+    z-index: -1;
 }
 
 .login-container {
