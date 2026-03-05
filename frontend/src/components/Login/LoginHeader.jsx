@@ -26,7 +26,7 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-inner">
-        <a href="/" className="navbar-logo">
+        <a href="#" className="navbar-logo">
           <img
             className="navbar-logo-image"
             src="https://storage.123fakturera.se/public/icons/diamond.png"
@@ -50,6 +50,16 @@ export default function Navbar() {
             <span />
             <span />
           </button>
+          <div
+            className={`navbar-dropdown ${menuOpen ? "open" : ""}`}
+            style={{ height: menuOpen ? 345 : 0 }}
+          >
+            {navLinks.map((link) => (
+              <a key={link} href="#" onClick={() => setMenuOpen(false)}>
+                {link}
+              </a>
+            ))}
+          </div>
           <div
             className="language-select"
             onClick={() => toggleLanguageMenu((prev) => !prev)}
@@ -78,13 +88,6 @@ export default function Navbar() {
               </div>
             )}
           </div>
-        </div>
-        <div className={`navbar-dropdown ${menuOpen ? "open" : ""}`}>
-          {navLinks.map((link) => (
-            <a key={link} href="#" onClick={() => setMenuOpen(false)}>
-              {link}
-            </a>
-          ))}
         </div>
       </div>
     </nav>
