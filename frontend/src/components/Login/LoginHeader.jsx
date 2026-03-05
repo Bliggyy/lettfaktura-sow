@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../../styles/Login/LoginHeader.css";
 import { useClickAway } from "@uidotdev/usehooks";
 
-const Navbar = () => {
+export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [language, setLanguage] = useState("English");
   const [languageMenu, toggleLanguageMenu] = useState(false);
@@ -89,6 +89,4 @@ const Navbar = () => {
       </div>
     </nav>
   );
-};
-
-export default Navbar;
+}
