@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../../styles/LoginPage.css";
+import "../../styles/LoginForm.css";
 import showPasswordImg from "../../assets/show-password.png";
 import hidePasswordImg from "../../assets/hide-password.png";
 
