@@ -1,9 +1,12 @@
-import PriceListHeader from "../components/Pricelist/PriceListHeader";
+import { PriceListHeader, PriceListSidebar } from "../components/PriceList";
 
 export default function PriceList() {
   return (
     <>
       <PriceListHeader />
+      <div>
+        <PriceListSidebar />
+      </div>
     </>
   );
 }
