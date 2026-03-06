@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Plus, Printer, Sliders, Search } from "lucide-react";
+import { Plus, Printer, Sliders, Search, MoreHorizontal } from "lucide-react";
 import styles from "../../styles/PriceList/PriceListTable.module.css";
 
 export default function PriceListTable() {
@@ -160,6 +160,11 @@ export default function PriceListTable() {
                 <td className={styles["table-data"]}>{row.unit}</td>
                 <td className={styles["table-data"]}>{row.inStock}</td>
                 <td className={styles["table-data"]}>{row.description}</td>
+                <td className={`${styles["column-actions"]}`}>
+                  <button className={styles["more-button"]}>
+                    <MoreHorizontal size={18} />
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
