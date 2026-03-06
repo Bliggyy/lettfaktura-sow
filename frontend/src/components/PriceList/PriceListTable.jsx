@@ -1,6 +1,10 @@
+import { useState } from "react";
 import styles from "../../styles/PriceList/PriceListTable.module.css";
 
 export default function PriceListTable() {
+  const [articleSearch, setArticleSearch] = useState("");
+  const [productSearch, setProductSearch] = useState("");
+
   const columns = [
     { key: "id", label: "Article No" },
     { key: "product", label: "Product / Service" },
@@ -90,6 +94,39 @@ export default function PriceListTable() {
 
   return (
     <div className={styles.body}>
+      <div>
+        <div>
+          <div>
+            <input
+              type="text"
+              placeholder="Search Article No..."
+              value={articleSearch}
+              onChange={(e) => setArticleSearch(e.target.value)}
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              placeholder="Search Product…"
+              value={productSearch}
+              onChange={(e) => setProductSearch(e.target.value)}
+            />
+          </div>
+        </div>
+
+        <div>
+          <button>
+            <span>New Product</span>
+          </button>
+          <button>
+            <span>Print List</span>
+          </button>
+          <button>
+            <span>Advanced Mode</span>
+          </button>
+        </div>
+      </div>
+
       <table>
         <thead>
           <tr>
