@@ -1,5 +1,6 @@
 import "./App.css";
 import LoginPage from "./pages/LoginPage";
+import PriceList from "./pages/PriceList";
 import { Routes, Route } from "react-router";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/price-list" element={<PriceList />} />
       </Routes>
     </>
   );
