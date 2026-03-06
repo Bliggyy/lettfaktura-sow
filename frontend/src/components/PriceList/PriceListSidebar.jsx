@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "../../styles/PriceList/PriceListMenu.module.css";
+import styles from "../../styles/PriceList/PriceListSidebar.module.css";
 import {
   File,
   User,
@@ -31,8 +31,16 @@ export default function PriceListSidebar() {
     { icon: <CircleX color="#eb5997" />, label: "Unpaid Invoices" },
     { icon: <Tags color="#f7f09f" />, label: "Offer" },
     { icon: <ClipboardList color="#f7f09f" />, label: "Inventory Control" },
-    { icon: <UserCheck color="#28a2f4" />, label: "Member Invoicing" },
-    { icon: <Import color="#91baeb" />, label: "Import/Export" },
+    {
+      icon: <UserCheck color="#28a2f4" />,
+      label: "Member Invoicing",
+      style: "disabled",
+    },
+    {
+      icon: <Import color="#91baeb" />,
+      label: "Import/Export",
+      style: "disabled",
+    },
     { icon: <LogOut color="#d5edeb" />, label: "Log out" },
   ];
 
@@ -42,7 +50,7 @@ export default function PriceListSidebar() {
       {sidebarItems.map((item) => (
         <div
           key={item.label}
-          className={`${styles["sidebar-list"]} ${styles["nav-item"]}`}
+          className={`${styles["sidebar-list"]} ${styles["nav-item"]} ${item.style ? styles[item.style] : ""}`}
         >
           {item.icon}
           <span>{item.label}</span>

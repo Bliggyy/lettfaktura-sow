@@ -28,3 +28,8 @@
     font-weight: 400; 
     transition: all 0.15s;
 }
+
+.nav-item.disabled {
+    color: gray;
+    cursor: not-allowed;
+}
