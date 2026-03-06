@@ -65,7 +65,7 @@ export default function PriceListSidebar({
 
   return (
     <aside
-      className={`${styles.sidebar} ${drawerOpen ? "drawer-open" : ""}`}
+      className={`${styles.sidebar} ${drawerOpen ? styles["drawer-open"] : ""}`}
       ref={sidebarRef}
     >
       <span className={styles["sidebar-section-label"]}>Menu</span>

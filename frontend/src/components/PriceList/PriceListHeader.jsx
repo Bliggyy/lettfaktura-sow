@@ -30,7 +30,7 @@ export default function PriceListHeader({
             <span className={styles.designation}>Product Manager</span>
           </div>
         </div>
-        <div className="navbar-right">
+        <div className={styles["navbar-right"]}>
           <LanguageSelect />
         </div>
       </div>

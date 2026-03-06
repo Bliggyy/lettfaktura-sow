@@ -20,6 +20,13 @@
     align-items: center;
 }
 
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+}
+
 .avatar {
     margin-right: 0.5rem;
 }
@@ -92,6 +99,7 @@
 
     .navbar-right {
         width: 100%;
+        margin-right: 2rem;
     }
 
     .navbar-dropdown {
