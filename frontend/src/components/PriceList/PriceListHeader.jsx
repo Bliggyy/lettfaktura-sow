@@ -1,4 +1,5 @@
 import { useState } from "react";
+import LanguageSelect from "../LanguageSelect";
 
 export default function PriceListHeader() {
   const supportedLanguages = [
@@ -30,14 +31,7 @@ export default function PriceListHeader() {
             </div>
           </div>
           <div className="navbar-right">
-            <div className="language-dropdown">
-              {supportedLanguages.map((lang) => (
-                <div key={lang.language} className="language-option">
-                  <span>{lang.language}</span>
-                  <img src={lang.img} alt={lang.language} />
-                </div>
-              ))}
-            </div>
+            <LanguageSelect />
           </div>
         </div>
       </header>
