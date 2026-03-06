@@ -6,6 +6,7 @@
     box-shadow: 1px 0 5px rgba(0, 0, 0, 0.5);
     height: 100dvh;
     top: 0;
+    transition: transform 0.25s ease;
 }
 
 .sidebar-section-label {
@@ -26,6 +27,7 @@
     font-weight: 500; 
     transition: all 0.15s;
     color: black;
+    margin-left: 1rem;
 }
 
 .nav-item.disabled {
@@ -37,4 +39,20 @@
   border: none;
   border-top: 3px solid #d1e0e0;
   margin: 0.5rem 0 0.5rem;
+}
+
+.icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.active-dot {
+  position: absolute;
+  left: -25px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #22c55e;
 }

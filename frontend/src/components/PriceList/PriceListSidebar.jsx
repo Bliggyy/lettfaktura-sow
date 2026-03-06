@@ -17,6 +17,7 @@ import {
 
 export default function PriceListSidebar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [activeItem, setActiveItem] = useState("Price List");
 
   const sidebarItems = [
     { icon: <File color="#98fdfc" />, label: "Invoices" },
@@ -48,15 +49,25 @@ export default function PriceListSidebar() {
     <aside className={`${styles.sidebar} ${drawerOpen ? "drawer-open" : ""}`}>
       <span className={styles["sidebar-section-label"]}>Menu</span>
       <hr className={styles["sidebar-divider"]} />
-      {sidebarItems.map((item) => (
-        <div
-          key={item.label}
-          className={`${styles["nav-item"]} ${item.style ? styles[item.style] : ""}`}
-        >
-          {item.icon}
-          <span>{item.label}</span>
-        </div>
-      ))}
+      {sidebarItems.map((item) => {
+        const isActive = activeItem === item.label;
+        const isDisabled = item.style === "disabled";
+
+        return (
+          <div
+            key={item.label}
+            className={`${styles["nav-item"]} ${isDisabled ? styles.disabled : ""} ${isActive ? styles.active : ""}`}
+            onClick={() => setActiveItem(item.label)}
+          >
+            <div className={styles["icon-wrapper"]}>
+              {isActive && <span className={styles["active-dot"]} />}
+              {item.icon}
+            </div>
+
+            <span>{item.label}</span>
+          </div>
+        );
+      })}
     </aside>
   );
 }
