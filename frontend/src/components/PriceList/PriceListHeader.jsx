@@ -1,17 +1,21 @@
-import { useState } from "react";
 import LanguageSelect from "../LanguageSelect";
 import styles from "../../styles/PriceList/PriceListHeader.module.css";
 import avatar from "../../assets/avatar.png";
 
-export default function PriceListHeader() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
+export default function PriceListHeader({
+  drawerOpen,
+  toggleDrawer,
+  hamburgerRef,
+}) {
   return (
     <header className={styles.navbar}>
       <div className={styles["navbar-inner"]}>
         <div className={styles["navbar-left"]}>
           <button
-            className={`${styles["hamburger"]} ${styles[menuOpen ? "open" : ""]}`}
+            className={`${styles["hamburger"]} ${drawerOpen ? styles.open : ""}`}
+            onClick={() => toggleDrawer()}
+            ref={hamburgerRef}
+            id="hamburgerButton"
           >
             <span />
             <span />

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import styles from "../../styles/PriceList/PriceListSidebar.module.css";
 import {
   File,
@@ -15,9 +15,13 @@ import {
   LogOut,
 } from "lucide-react";
 
-export default function PriceListSidebar() {
-  const [drawerOpen, setDrawerOpen] = useState(false);
+export default function PriceListSidebar({
+  drawerOpen,
+  toggleDrawer,
+  hamburgerRef,
+}) {
   const [activeItem, setActiveItem] = useState("Price List");
+  const sidebarRef = useRef(null);
 
   const sidebarItems = [
     { icon: <File color="#98fdfc" />, label: "Invoices" },
@@ -45,8 +49,25 @@ export default function PriceListSidebar() {
     { icon: <LogOut color="#d5edeb" />, label: "Log out" },
   ];
 
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (sidebarRef.current?.contains(e.target)) return;
+      if (hamburgerRef.current?.contains(e.target)) return;
+      toggleDrawer(false);
+    };
+
+    if (drawerOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [drawerOpen]);
+
   return (
-    <aside className={`${styles.sidebar} ${drawerOpen ? "drawer-open" : ""}`}>
+    <aside
+      className={`${styles.sidebar} ${drawerOpen ? "drawer-open" : ""}`}
+      ref={sidebarRef}
+    >
       <span className={styles["sidebar-section-label"]}>Menu</span>
       <hr className={styles["sidebar-divider"]} />
       {sidebarItems.map((item) => {
