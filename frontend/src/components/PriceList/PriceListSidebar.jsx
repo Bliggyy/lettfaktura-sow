@@ -78,7 +78,10 @@ export default function PriceListSidebar({
           <div
             key={item.label}
             className={`${styles["nav-item"]} ${isDisabled ? styles.disabled : ""} ${isActive ? styles.active : ""}`}
-            onClick={() => setActiveItem(item.label)}
+            onClick={() => {
+              setActiveItem(item.label);
+              toggleDrawer(false);
+            }}
           >
             <div className={styles["icon-wrapper"]}>
               {isActive && <span className={styles["active-dot"]} />}
