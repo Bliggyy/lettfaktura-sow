@@ -1,0 +1,147 @@
+.login-main {
+    flex: 1;
+}
+
+.login-page {
+    width: 100%;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-page::before {
+    background-image: url("https://storage.123fakturera.se/public/wallpapers/sverige43.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: fixed;
+    inset: 0;
+    content: "";
+    z-index: -1;
+}
+
+.login-container {
+    display: grid;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    max-width: 600px;
+    margin-top: 2rem;
+    background-color: white;
+    color: black;
+    font-weight: 500;
+    border-radius: 25px;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-bottom: 2.5rem;
+    box-sizing: border-box;
+}
+
+.login-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+    width: 90%;
+}
+
+.login-header {
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+  .login-container {
+    width: 60%;
+    margin-top: 5%;
+  }
+
+  .login-header {
+    font-size: 2.5rem
+  }
+}
+
+@media (max-width: 400px) {
+    .login-container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media (min-width: 800px) {
+    .login-footer {
+        width: 70%;
+    }
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+    font-size: 1.2rem;
+}
+
+.form-label {
+    margin-bottom: 1%;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+}
+
+.button-container button {
+    background-color: #07a31f;
+    border: none;
+    border-radius: 1.5rem;
+    width: 60%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.login-input input, .login-password input {
+    width: 100%;
+    border-radius: 1.5rem;
+    font-size: 18px;
+    background-color: white;
+    color: black;
+    box-sizing: border-box;
+    padding: 1rem;
+    border: 1px solid #ccc
+}
+
+.login-password > div {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.login-password input {
+    padding-right: 3rem;
+}
+
+#password-img {
+    position: absolute;
+    right: 1rem;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+#password-img:hover {
+    cursor: pointer;
+}
+
+.login-container h1 {
+    color: red;
+}
+
+.login-footer a {
+    color: black;
+    text-decoration: solid;
+}
