@@ -1,5 +1,9 @@
 import { useState, useRef } from "react";
-import { PriceListHeader, PriceListSidebar } from "../components/PriceList";
+import {
+  PriceListHeader,
+  PriceListSidebar,
+  PriceListTable,
+} from "../components/PriceList";
 import "../styles/PriceList/PriceList.css";
 
 export default function PriceList() {
@@ -22,12 +26,13 @@ export default function PriceList() {
         toggleDrawer={toggleDrawer}
         hamburgerRef={hamburgerRef}
       />
-      <div>
+      <div className="pricelist-container">
         <PriceListSidebar
           drawerOpen={drawerOpen}
           toggleDrawer={toggleDrawer}
           hamburgerRef={hamburgerRef}
         />
+        <PriceListTable />
       </div>
     </div>
   );
