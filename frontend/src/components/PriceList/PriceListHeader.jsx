@@ -1,23 +1,13 @@
 import { useState } from "react";
 import LanguageSelect from "../LanguageSelect";
+import styles from "../../styles/PriceList/PriceListHeader.module.css";
 
 export default function PriceListHeader() {
-  const supportedLanguages = [
-    {
-      language: "English",
-      img: "https://storage.123fakturere.no/public/flags/GB.png",
-    },
-    {
-      language: "Svenska",
-      img: "https://storage.123fakturere.no/public/flags/SE.png",
-    },
-  ];
-
   return (
     <>
-      <header className="navbar">
+      <header className={styles.navbar}>
         <div className="navbar-inner">
-          <div className="navbar-left">
+          <div className={styles["navbar-left"]}>
             <button className={`hamburger-btn`}>
               <span />
               <span />
@@ -25,9 +15,9 @@ export default function PriceListHeader() {
             </button>
 
             <div className="avatar">AL</div>
-            <div className="user-info">
-              <span className="user-name">Alexandra Lee</span>
-              <span className="user-role">Product Manager</span>
+            <div className={styles["user-info"]}>
+              <span>Alexandra Lee</span>
+              <span>Product Manager</span>
             </div>
           </div>
           <div className="navbar-right">

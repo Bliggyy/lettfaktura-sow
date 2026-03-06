@@ -1,0 +1,20 @@
+.navbar {
+    background-color: #0f7ee9;
+    padding: 0 2rem;
+    display: flex;
+    width: 100%;
+}
+
+.navbar-left {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar-inner {
+    
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
