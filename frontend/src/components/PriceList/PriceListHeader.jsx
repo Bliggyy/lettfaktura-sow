@@ -8,7 +8,7 @@ export default function PriceListHeader() {
 
   return (
     <header className={styles.navbar}>
-      <div className="navbar-inner">
+      <div className={styles["navbar-inner"]}>
         <div className={styles["navbar-left"]}>
           <button
             className={`${styles["hamburger"]} ${styles[menuOpen ? "open" : ""]}`}

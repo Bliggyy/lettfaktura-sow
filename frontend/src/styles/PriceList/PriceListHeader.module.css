@@ -3,11 +3,21 @@
     padding: 0 2rem;
     display: flex;
     width: 100%;
+    height: 100px;
+}
+
+.navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .navbar-left {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .avatar {
@@ -15,8 +25,8 @@
 }
 
 .avatar-image {
-    width: 42px; 
-    height: 42px; 
+    width: 64px; 
+    height: 64px; 
     border-radius: 50%;
     display: flex; 
     align-items: center; 
@@ -64,11 +74,11 @@
 }
 
 .username {
-    font-size: 0.85rem;
+    font-size: 1rem;
 }
 
 .designation {
-    font-size: 0.65rem;
+    font-size: 0.8rem;
 }
 
 @media (max-width: 1200px) {
