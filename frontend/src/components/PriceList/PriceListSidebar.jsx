@@ -46,7 +46,7 @@ export default function PriceListSidebar({
       label: "Import/Export",
       style: "disabled",
     },
-    { icon: <LogOut color="#d5edeb" />, label: "Log out" },
+    { icon: <LogOut color="#caeae5" />, label: "Log out" },
   ];
 
   useEffect(() => {

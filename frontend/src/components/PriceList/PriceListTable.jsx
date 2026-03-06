@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Plus, Printer, Sliders, Search } from "lucide-react";
 import styles from "../../styles/PriceList/PriceListTable.module.css";
 
 export default function PriceListTable() {
@@ -94,35 +95,44 @@ export default function PriceListTable() {
 
   return (
     <div className={styles.body}>
-      <div>
-        <div>
-          <div>
+      <div className={styles.toolbar}>
+        <div className={styles["search-group"]}>
+          <div className={styles["search-bar"]}>
             <input
               type="text"
               placeholder="Search Article No..."
               value={articleSearch}
               onChange={(e) => setArticleSearch(e.target.value)}
             />
+            <button className={styles["button-search"]}>
+              <Search color="#9fdad8" />
+            </button>
           </div>
-          <div>
+          <div className={styles["search-bar"]}>
             <input
               type="text"
               placeholder="Search Product…"
               value={productSearch}
               onChange={(e) => setProductSearch(e.target.value)}
             />
+            <button className={styles["button-search"]}>
+              <Search color="#9fdad8" />
+            </button>
           </div>
         </div>
 
-        <div>
-          <button>
-            <span>New Product</span>
+        <div className={styles["button-group"]}>
+          <button className={styles.button}>
+            <span className={styles["button-label"]}>New Product</span>
+            <Plus color="#4ff1a8" strokeWidth="3" size={16} />
           </button>
-          <button>
-            <span>Print List</span>
+          <button className={styles.button}>
+            <span className={styles["button-label"]}>Print List</span>
+            <Printer color="#6bf1f2" size={16} />
           </button>
-          <button>
-            <span>Advanced Mode</span>
+          <button className={styles.button}>
+            <span className={styles["button-label"]}>Advanced Mode</span>
+            <Sliders color="#52cddb" size={16} />
           </button>
         </div>
       </div>
