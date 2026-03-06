@@ -137,32 +137,34 @@ export default function PriceListTable() {
         </div>
       </div>
 
-      <table>
-        <thead>
-          <tr>
-            {columns.map((col) => (
-              <th key={col.key}>
-                <span>{col.label}</span>
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {initialProducts.map((row) => (
-            <tr key={row.id}>
-              <td>{row.id}</td>
-              <td>{row.product}</td>
-              <td>{row.inPrice}</td>
-              <td>{row.price}</td>
-              <td>{row.unit}</td>
-              <td>
-                <span>{row.inStock}</span>
-              </td>
-              <td>{row.description}</td>
+      <div className={styles["table-wrapper"]}>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              {columns.map((col) => (
+                <th key={col.key} className={`${styles["table-header"]}`}>
+                  <span className={styles["table-header-inner"]}>
+                    {col.label}
+                  </span>
+                </th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {initialProducts.map((row) => (
+              <tr key={row.id} className={styles.row}>
+                <td className={styles["table-data"]}>{row.id}</td>
+                <td className={styles["table-data"]}>{row.product}</td>
+                <td className={styles["table-data"]}>{row.inPrice}</td>
+                <td className={styles["table-data"]}>{row.price}</td>
+                <td className={styles["table-data"]}>{row.unit}</td>
+                <td className={styles["table-data"]}>{row.inStock}</td>
+                <td className={styles["table-data"]}>{row.description}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

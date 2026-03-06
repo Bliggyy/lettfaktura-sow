@@ -95,3 +95,45 @@
     background: transparent;
     border: none;
 }
+
+.table-wrapper {
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: auto;
+}
+
+.table {
+  width: 100%;
+  border-spacing: 10px 10px;
+}
+
+.table-header {
+  padding: 1rem 0rem;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.table-header-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.row {
+  cursor: pointer;
+}
+
+.table-data {
+  padding: 0.2rem 0.5rem;
+  font-size: 13.5px;
+  background: white;
+  border: 1px solid #77d2d2;
+  border-radius: 10px;
+  transition: background 0.15s;
+  white-space: nowrap;
+  margin-right: 1rem;
+}
