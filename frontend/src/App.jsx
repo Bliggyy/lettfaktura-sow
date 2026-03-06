@@ -1,10 +1,13 @@
 import "./App.css";
 import LoginPage from "./pages/LoginPage";
+import { Routes, Route } from "react-router";
 
 function App() {
   return (
     <>
-      <LoginPage />
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
     </>
   );
 }
