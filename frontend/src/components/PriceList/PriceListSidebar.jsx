@@ -47,10 +47,11 @@ export default function PriceListSidebar() {
   return (
     <aside className={`${styles.sidebar} ${drawerOpen ? "drawer-open" : ""}`}>
       <span className={styles["sidebar-section-label"]}>Menu</span>
+      <hr className={styles["sidebar-divider"]} />
       {sidebarItems.map((item) => (
         <div
           key={item.label}
-          className={`${styles["sidebar-list"]} ${styles["nav-item"]} ${item.style ? styles[item.style] : ""}`}
+          className={`${styles["nav-item"]} ${item.style ? styles[item.style] : ""}`}
         >
           {item.icon}
           <span>{item.label}</span>
