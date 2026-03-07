@@ -2,8 +2,8 @@
     flex: 1;
     overflow-y: auto;
     padding-top: 1rem;
-    padding-left: 5rem;
-    padding-right: 5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -21,6 +21,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  padding-left: 3rem;
 }
 
 .search-bar {
@@ -127,6 +128,7 @@
 
 .row {
   cursor: pointer;
+  position: relative;
 }
 
 .table-data {
@@ -157,6 +159,16 @@
   transition: all 0.15s;
 }
 
-.sort-icon-hidden {
+.row-indicator {
+  width: 1px;        
+  padding: 0 4px;    
+  text-align: right;
+}
+
+.sort-icon-hidden, .inactive-row {
   visibility: hidden;
+}
+
+.selected-row {
+  visibility: visible;
 }

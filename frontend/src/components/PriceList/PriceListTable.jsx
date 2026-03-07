@@ -7,6 +7,7 @@ import {
   MoreHorizontal,
   ArrowUp,
   ArrowDown,
+  MoveRight,
 } from "lucide-react";
 import styles from "../../styles/PriceList/PriceListTable.module.css";
 
@@ -15,8 +16,10 @@ export default function PriceListTable() {
   const [productSearch, setProductSearch] = useState("");
   const [sortKey, setSortKey] = useState(null);
   const [sortDirection, setSortDirection] = useState("asc");
+  const [selectedRow, setSelectedRow] = useState(null);
 
   const columns = [
+    { key: "id", label: "", sortColor: "#78e2e1" },
     { key: "id", label: "Article No", sortColor: "#78e2e1" },
     { key: "product", label: "Product / Service", sortColor: "#85E196" },
     { key: "inPrice", label: "In Price", sortColor: "#78e2e1" },
@@ -191,7 +194,19 @@ export default function PriceListTable() {
           </thead>
           <tbody>
             {initialProducts.map((row) => (
-              <tr key={row.id} className={styles.row}>
+              <tr
+                key={row.id}
+                className={styles.row}
+                onClick={() => setSelectedRow(row.id)}
+              >
+                {
+                  <td className={styles["row-indicator"]}>
+                    <MoveRight
+                      size={18}
+                      className={`${styles["inactive-row"]} ${selectedRow == row.id ? styles["selected-row"] : ""}`}
+                    />
+                  </td>
+                }
                 <td className={styles["table-data"]}>{row.id}</td>
                 <td className={styles["table-data"]}>{row.product}</td>
                 <td className={styles["table-data"]}>{row.inPrice}</td>
