@@ -17,15 +17,16 @@ export default function PriceListTable() {
   const [sortDirection, setSortDirection] = useState("asc");
 
   const columns = [
-    { key: "id", label: "Article No" },
-    { key: "product", label: "Product / Service" },
-    { key: "inPrice", label: "In Price" },
-    { key: "price", label: "Price" },
-    { key: "unit", label: "Unit" },
-    { key: "inStock", label: "In Stock" },
+    { key: "id", label: "Article No", sortColor: "#78e2e1" },
+    { key: "product", label: "Product / Service", sortColor: "#85E196" },
+    { key: "inPrice", label: "In Price", sortColor: "#78e2e1" },
+    { key: "price", label: "Price", sortColor: "#85E196" },
+    { key: "unit", label: "Unit", sortColor: "#78e2e1" },
+    { key: "inStock", label: "In Stock", sortColor: "#85E196" },
     {
       key: "description",
       label: "Description",
+      sortColor: "#78e2e1",
     },
   ];
   const initialProducts = [
@@ -112,13 +113,17 @@ export default function PriceListTable() {
     }
   };
 
-  const getSortIcon = (key) => {
+  const getSortIcon = (key, color) => {
     if (sortKey !== key)
       return <ArrowUp size={24} className={styles["sort-icon-hidden"]} />;
     return sortDirection === "asc" ? (
-      <ArrowUp size={24} className={styles["sort-icon-active"]} />
+      <ArrowUp size={24} color={color} className={styles["sort-icon-active"]} />
     ) : (
-      <ArrowDown size={24} className={styles["sort-icon-active"]} />
+      <ArrowDown
+        size={24}
+        color={color}
+        className={styles["sort-icon-active"]}
+      />
     );
   };
 
@@ -178,7 +183,7 @@ export default function PriceListTable() {
                 >
                   <span className={styles["table-header-inner"]}>
                     {col.label}
-                    {getSortIcon(col.key)}
+                    {getSortIcon(col.key, col.sortColor)}
                   </span>
                 </th>
               ))}
