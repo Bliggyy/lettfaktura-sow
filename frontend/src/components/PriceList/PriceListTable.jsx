@@ -1,10 +1,20 @@
 import { useState } from "react";
-import { Plus, Printer, Sliders, Search, MoreHorizontal } from "lucide-react";
+import {
+  Plus,
+  Printer,
+  Sliders,
+  Search,
+  MoreHorizontal,
+  ArrowUp,
+  ArrowDown,
+} from "lucide-react";
 import styles from "../../styles/PriceList/PriceListTable.module.css";
 
 export default function PriceListTable() {
   const [articleSearch, setArticleSearch] = useState("");
   const [productSearch, setProductSearch] = useState("");
+  const [sortKey, setSortKey] = useState(null);
+  const [sortDirection, setSortDirection] = useState("asc");
 
   const columns = [
     { key: "id", label: "Article No" },
@@ -93,6 +103,25 @@ export default function PriceListTable() {
     },
   ];
 
+  const handleSort = (key) => {
+    if (sortKey === key) {
+      setSortDirection((prev) => (prev === "asc" ? "desc" : "asc"));
+    } else {
+      setSortKey(key);
+      setSortDirection("asc");
+    }
+  };
+
+  const getSortIcon = (key) => {
+    if (sortKey !== key)
+      return <ArrowUp size={24} className={styles["sort-icon-hidden"]} />;
+    return sortDirection === "asc" ? (
+      <ArrowUp size={24} className={styles["sort-icon-active"]} />
+    ) : (
+      <ArrowDown size={24} className={styles["sort-icon-active"]} />
+    );
+  };
+
   return (
     <div className={styles.body}>
       <div className={styles.toolbar}>
@@ -142,9 +171,14 @@ export default function PriceListTable() {
           <thead>
             <tr>
               {columns.map((col) => (
-                <th key={col.key} className={`${styles["table-header"]}`}>
+                <th
+                  key={col.key}
+                  className={`${styles["table-header"]}`}
+                  onClick={() => handleSort(col.key)}
+                >
                   <span className={styles["table-header-inner"]}>
                     {col.label}
+                    {getSortIcon(col.key)}
                   </span>
                 </th>
               ))}
