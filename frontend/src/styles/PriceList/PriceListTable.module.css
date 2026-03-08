@@ -175,13 +175,10 @@
 }
 
 @media (max-width: 1024px) {
-  .col-inprice, .col-description {
+  .col-inprice, .col-description, .button-label, .row-indicator, .arrow-indicator {
     display: none;
   }
 
-  .button-label {
-    display: none;
-  }
   .button {
     padding: 0.5rem 2rem;
     gap: 0;

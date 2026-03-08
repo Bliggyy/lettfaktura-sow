@@ -19,10 +19,20 @@ export default function PriceListTable() {
   const [selectedRow, setSelectedRow] = useState(null);
 
   const columns = [
-    { key: "arrow-indicator", label: "", sortColor: "#78e2e1" },
+    {
+      key: "arrow-indicator",
+      label: "",
+      sortColor: "#78e2e1",
+      cssClass: "arrow-indicator",
+    },
     { key: "id", label: "Article No", sortColor: "#78e2e1" },
     { key: "product", label: "Product / Service", sortColor: "#85E196" },
-    { key: "inPrice", label: "In Price", sortColor: "#78e2e1" },
+    {
+      key: "inPrice",
+      label: "In Price",
+      sortColor: "#78e2e1",
+      cssClass: "col-inprice",
+    },
     { key: "price", label: "Price", sortColor: "#85E196" },
     { key: "unit", label: "Unit", sortColor: "#78e2e1" },
     { key: "inStock", label: "In Stock", sortColor: "#85E196" },
@@ -30,6 +40,7 @@ export default function PriceListTable() {
       key: "description",
       label: "Description",
       sortColor: "#78e2e1",
+      cssClass: "col-description",
     },
   ];
   const initialProducts = [
@@ -181,7 +192,7 @@ export default function PriceListTable() {
               {columns.map((col) => (
                 <th
                   key={col.key}
-                  className={`${styles["table-header"]}`}
+                  className={`${styles["table-header"]} ${styles[col.cssClass]}`}
                   onClick={() => handleSort(col.key)}
                 >
                   <span className={styles["table-header-inner"]}>
@@ -209,11 +220,19 @@ export default function PriceListTable() {
                 }
                 <td className={styles["table-data"]}>{row.id}</td>
                 <td className={styles["table-data"]}>{row.product}</td>
-                <td className={styles["table-data"]}>{row.inPrice}</td>
+                <td
+                  className={`${styles["table-data"]} ${styles["col-inprice"]}`}
+                >
+                  {row.inPrice}
+                </td>
                 <td className={styles["table-data"]}>{row.price}</td>
                 <td className={styles["table-data"]}>{row.unit}</td>
                 <td className={styles["table-data"]}>{row.inStock}</td>
-                <td className={styles["table-data"]}>{row.description}</td>
+                <td
+                  className={`${styles["table-data"]} ${styles["col-description"]}`}
+                >
+                  {row.description}
+                </td>
                 <td className={`${styles["column-actions"]}`}>
                   <button className={styles["more-button"]}>
                     <MoreHorizontal size={18} />
