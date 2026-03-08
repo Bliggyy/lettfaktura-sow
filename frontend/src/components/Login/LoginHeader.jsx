@@ -1,30 +1,14 @@
 import { useState } from "react";
 import "../../styles/Login/LoginHeader.css";
 import { useClickAway } from "@uidotdev/usehooks";
+import LanguageSelect from "../LanguageSelect";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [language, setLanguage] = useState("English");
-  const [languageMenu, toggleLanguageMenu] = useState(false);
-
-  const languageRef = useClickAway(() => {
-    toggleLanguageMenu(false);
-  });
   const hamburgerRef = useClickAway(() => {
     setMenuOpen(false);
   });
-
   const navLinks = ["Home", "Order", "Our Customers", "About us", "Contact Us"];
-  const supportedLanguages = [
-    {
-      language: "English",
-      img: "https://storage.123fakturere.no/public/flags/GB.png",
-    },
-    {
-      language: "Svenska",
-      img: "https://storage.123fakturere.no/public/flags/SE.png",
-    },
-  ];
 
   return (
     <nav className="navbar">
@@ -64,34 +48,7 @@ export default function Navbar() {
               </a>
             ))}
           </div>
-          <div
-            className="language-select"
-            onClick={() => toggleLanguageMenu((prev) => !prev)}
-            ref={languageRef}
-          >
-            <span>{language}</span>
-            <img
-              src={supportedLanguages.find((l) => l.language === language)?.img}
-              alt={language}
-            />
-            {languageMenu && (
-              <div className="language-dropdown">
-                {supportedLanguages.map((lang) => (
-                  <div
-                    key={lang.language}
-                    className="language-option"
-                    onClick={() => {
-                      setLanguage(lang.language);
-                      setLangOpen(false);
-                    }}
-                  >
-                    <span>{lang.language}</span>
-                    <img src={lang.img} alt={lang.language} />
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+          <LanguageSelect />
         </div>
       </div>
     </nav>
