@@ -11,6 +11,7 @@
     left: 0;
     z-index: 100;
     transform: translateX(-100%);
+    background-color: white;
 }
 
 .sidebar-section-label {
