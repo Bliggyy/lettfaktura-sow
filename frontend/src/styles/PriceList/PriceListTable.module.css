@@ -30,7 +30,7 @@
   gap: 0.5;
   background: #ffffff;
   border: 1.5px solid #e2e6ef;
-  border-radius: 10px;
+  border-radius: 30px;
   padding: 0.5rem 1rem;
   transition: border-color 0.2s;
 }
@@ -63,7 +63,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 0.5rem;
-  border-radius: 20px;
+  border-radius: 30px;
   border: none;
   font-size: 1rem;
   font-weight: 500;
@@ -174,7 +174,7 @@
   visibility: visible;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1350px) {
   .body {
     padding-left: 0.5rem;
     padding-right: 1rem;
@@ -207,6 +207,10 @@
   .button-group {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+  }
+
+  .button {
+    padding: 1rem 3rem;
   }
 
   .search-bar input {

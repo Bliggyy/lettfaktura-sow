@@ -187,15 +187,15 @@ export default function PriceListTable() {
         <div className={styles["button-group"]}>
           <button className={styles.button}>
             <span className={styles["button-label"]}>New Product</span>
-            <Plus color="#4ff1a8" strokeWidth="3" size={16} />
+            <Plus color="#4ff1a8" strokeWidth="3" size={21} />
           </button>
           <button className={styles.button}>
             <span className={styles["button-label"]}>Print List</span>
-            <Printer color="#6bf1f2" size={16} />
+            <Printer color="#6bf1f2" size={21} />
           </button>
           <button className={styles.button}>
             <span className={styles["button-label"]}>Advanced Mode</span>
-            <Sliders color="#52cddb" size={16} />
+            <Sliders color="#52cddb" size={21} />
           </button>
         </div>
       </div>
