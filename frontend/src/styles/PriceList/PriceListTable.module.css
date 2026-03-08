@@ -63,7 +63,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 0.5rem;
-  border-radius: 10px;
+  border-radius: 20px;
   border: none;
   font-size: 1rem;
   font-weight: 500;
@@ -163,6 +163,7 @@
   width: 1px;        
   padding: 0 4px;    
   text-align: right;
+  color: #0f7ee9;
 }
 
 .sort-icon-hidden, .inactive-row {
@@ -171,4 +172,18 @@
 
 .selected-row {
   visibility: visible;
+}
+
+@media (max-width: 1024px) {
+  .col-inprice, .col-description {
+    display: none;
+  }
+
+  .button-label {
+    display: none;
+  }
+  .button {
+    padding: 0.5rem 2rem;
+    gap: 0;
+  }
 }

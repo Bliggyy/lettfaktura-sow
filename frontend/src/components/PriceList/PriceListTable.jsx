@@ -19,7 +19,7 @@ export default function PriceListTable() {
   const [selectedRow, setSelectedRow] = useState(null);
 
   const columns = [
-    { key: "id", label: "", sortColor: "#78e2e1" },
+    { key: "arrow-indicator", label: "", sortColor: "#78e2e1" },
     { key: "id", label: "Article No", sortColor: "#78e2e1" },
     { key: "product", label: "Product / Service", sortColor: "#85E196" },
     { key: "inPrice", label: "In Price", sortColor: "#78e2e1" },
@@ -117,7 +117,7 @@ export default function PriceListTable() {
   };
 
   const getSortIcon = (key, color) => {
-    if (sortKey !== key)
+    if (sortKey !== key || key === "arrow-indicator")
       return <ArrowUp size={24} className={styles["sort-icon-hidden"]} />;
     return sortDirection === "asc" ? (
       <ArrowUp size={24} color={color} className={styles["sort-icon-active"]} />
