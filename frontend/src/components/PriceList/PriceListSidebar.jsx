@@ -79,7 +79,6 @@ export default function PriceListSidebar({
             key={item.label}
             className={`${styles["nav-item"]} ${isDisabled ? styles.disabled : ""} ${isActive ? styles.active : ""}`}
             onClick={() => {
-              setActiveItem(item.label);
               toggleDrawer(false);
             }}
           >
