@@ -240,7 +240,9 @@ export default function PriceListTable() {
               <tr
                 key={row.id}
                 className={styles.row}
-                onClick={() => setSelectedRow(row.id)}
+                onClick={() =>
+                  setSelectedRow((prev) => (prev === row.id ? null : row.id))
+                }
               >
                 {
                   <td className={styles["row-indicator"]}>
