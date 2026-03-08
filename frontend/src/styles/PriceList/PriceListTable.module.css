@@ -175,12 +175,49 @@
 }
 
 @media (max-width: 1024px) {
-  .col-inprice, .col-description, .button-label, .row-indicator, .arrow-indicator {
+  .body {
+    padding-left: 0.5rem;
+    padding-right: 1rem;
+  }
+
+  .col-inprice, .col-description, .button-label {
     display: none;
+  }
+
+  .search-bar input {
+    width: 200px;
   }
 
   .button {
     padding: 0.5rem 2rem;
     gap: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-group {
+    padding-left: 0.5rem;
+  }
+
+  .button-group {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .search-bar input {
+    width: 100%;
+  }
+
+  .button-group {
+    justify-content: space-between;
+  }
+
+  .col-unit, .col-instock, .col-article {
+    display: none;
   }
 }

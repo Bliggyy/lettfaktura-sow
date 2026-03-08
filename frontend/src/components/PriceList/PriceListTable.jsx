@@ -25,17 +25,32 @@ export default function PriceListTable() {
       sortColor: "#78e2e1",
       cssClass: "arrow-indicator",
     },
-    { key: "id", label: "Article No", sortColor: "#78e2e1" },
-    { key: "product", label: "Product / Service", sortColor: "#85E196" },
+    {
+      key: "id",
+      label: "Article No",
+      sortColor: "#78e2e1",
+      cssClass: "col-article",
+    },
+    {
+      key: "product",
+      label: "Product / Service",
+      sortColor: "#85E196",
+      cssClass: "",
+    },
     {
       key: "inPrice",
       label: "In Price",
       sortColor: "#78e2e1",
       cssClass: "col-inprice",
     },
-    { key: "price", label: "Price", sortColor: "#85E196" },
-    { key: "unit", label: "Unit", sortColor: "#78e2e1" },
-    { key: "inStock", label: "In Stock", sortColor: "#85E196" },
+    { key: "price", label: "Price", sortColor: "#85E196", cssClass: "" },
+    { key: "unit", label: "Unit", sortColor: "#78e2e1", cssClass: "col-unit" },
+    {
+      key: "inStock",
+      label: "In Stock",
+      sortColor: "#85E196",
+      cssClass: "col-instock",
+    },
     {
       key: "description",
       label: "Description",
@@ -218,7 +233,11 @@ export default function PriceListTable() {
                     />
                   </td>
                 }
-                <td className={styles["table-data"]}>{row.id}</td>
+                <td
+                  className={`${styles["table-data"]} ${styles["col-article"]}`}
+                >
+                  {row.id}
+                </td>
                 <td className={styles["table-data"]}>{row.product}</td>
                 <td
                   className={`${styles["table-data"]} ${styles["col-inprice"]}`}
@@ -226,8 +245,14 @@ export default function PriceListTable() {
                   {row.inPrice}
                 </td>
                 <td className={styles["table-data"]}>{row.price}</td>
-                <td className={styles["table-data"]}>{row.unit}</td>
-                <td className={styles["table-data"]}>{row.inStock}</td>
+                <td className={`${styles["table-data"]} ${styles["col-unit"]}`}>
+                  {row.unit}
+                </td>
+                <td
+                  className={`${styles["table-data"]} ${styles["col-instock"]}`}
+                >
+                  {row.inStock}
+                </td>
                 <td
                   className={`${styles["table-data"]} ${styles["col-description"]}`}
                 >
