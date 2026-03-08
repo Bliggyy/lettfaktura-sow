@@ -47,8 +47,8 @@
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    width: 24px;
-    height: 18px;
+    width: 30px;
+    height: 24px;
     background: none;
     border: none;
     cursor: pointer;
@@ -57,7 +57,7 @@
 
 .hamburger span {
     display: block;
-    height: 2px;
+    height: 3px;
     width: 100%;
     background-color: white;
     border-radius: 2px;
@@ -66,13 +66,13 @@
 }
 
 .hamburger.open span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+    transform: translateY(10px) rotate(45deg);
 }
 .hamburger.open span:nth-child(2) {
     opacity: 0;
 }
 .hamburger.open span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-10px) rotate(-45deg);
 }
 
 .user-info-container {
