@@ -35,7 +35,7 @@ export default function PriceListTable() {
       key: "product",
       label: "Product / Service",
       sortColor: "#85E196",
-      cssClass: "",
+      cssClass: "col-product",
     },
     {
       key: "inPrice",
@@ -43,7 +43,12 @@ export default function PriceListTable() {
       sortColor: "#78e2e1",
       cssClass: "col-inprice",
     },
-    { key: "price", label: "Price", sortColor: "#85E196", cssClass: "" },
+    {
+      key: "price",
+      label: "Price",
+      sortColor: "#85E196",
+      cssClass: "col-price",
+    },
     { key: "unit", label: "Unit", sortColor: "#78e2e1", cssClass: "col-unit" },
     {
       key: "inStock",
@@ -57,6 +62,12 @@ export default function PriceListTable() {
       sortColor: "#78e2e1",
       cssClass: "col-description",
     },
+    {
+      key: "extra",
+      label: "",
+      sortColor: "#78e2e1",
+      cssClass: "col-extra",
+    },
   ];
   const initialProducts = [
     {
@@ -66,7 +77,8 @@ export default function PriceListTable() {
       price: 149.99,
       unit: "pcs",
       inStock: 42,
-      description: "Over-ear noise cancelling",
+      description:
+        "Over-ear noise cancelling Over-ear noise cancelling Over-ear noise cancelling Over-ear noise cancelling Over-ear noise cancelling Over-ear noise cancelling Over-ear noise cancelling Over-ear noise cancelling",
     },
     {
       id: "A002",
@@ -99,7 +111,7 @@ export default function PriceListTable() {
       id: "A005",
       product: "Desk LED Lamp",
       inPrice: 22.0,
-      price: 74.95,
+      price: 74000.95,
       unit: "pcs",
       inStock: 56,
       description: "Touch dimmer, 3 color modes",
@@ -228,7 +240,8 @@ export default function PriceListTable() {
       price: 79.0,
       unit: "pcs",
       inStock: 0,
-      description: "Anti-fatigue, beveled edge",
+      description:
+        "Anti-fatigue, beveled edge Anti-fatigue, beveled edge Anti-fatigue, beveled edge Anti-fatigue, beveled edge Anti-fatigue, beveled edge Anti-fatigue, beveled edge",
     },
     {
       id: "A020",
@@ -251,7 +264,7 @@ export default function PriceListTable() {
   };
 
   const getSortIcon = (key, color) => {
-    if (sortKey !== key || key === "arrow-indicator")
+    if (sortKey !== key || key.contains(["arrow-indicator", "extra"]))
       return <ArrowUp size={24} className={styles["sort-icon-hidden"]} />;
     return sortDirection === "asc" ? (
       <ArrowUp size={24} color={color} className={styles["sort-icon-active"]} />

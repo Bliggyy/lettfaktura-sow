@@ -103,9 +103,17 @@
   height: 675px;
 }
 
+.table-wrapper thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+}
+
 .table {
   width: 100%;
   border-spacing: 10px 10px;
+  table-layout: fixed;
 }
 
 .table-header {
@@ -140,6 +148,8 @@
   transition: background 0.15s;
   white-space: nowrap;
   margin-right: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .column-actions {
@@ -172,6 +182,22 @@
 
 .selected-row {
   visibility: visible;
+}
+
+.arrow-indicator, .col-extra {
+  width: 2%;
+}
+
+.col-inprice, .col-price, .col-instock {
+  width: 7%;
+}
+
+.col-unit, .col-article {
+  width: 10%;
+}
+
+.col-product, .col-description {
+  width: 20%;
 }
 
 @media (max-width: 1350px) {
