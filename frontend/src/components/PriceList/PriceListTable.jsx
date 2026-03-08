@@ -264,7 +264,7 @@ export default function PriceListTable() {
   };
 
   const getSortIcon = (key, color) => {
-    if (sortKey !== key || key.contains(["arrow-indicator", "extra"]))
+    if (sortKey !== key || ["arrow-indicator", "extra"].includes(key))
       return <ArrowUp size={24} className={styles["sort-icon-hidden"]} />;
     return sortDirection === "asc" ? (
       <ArrowUp size={24} color={color} className={styles["sort-icon-active"]} />
@@ -346,7 +346,11 @@ export default function PriceListTable() {
                 <th
                   key={col.key}
                   className={`${styles["table-header"]} ${styles[col.cssClass]}`}
-                  onClick={() => handleSort(col.key)}
+                  onClick={() =>
+                    ["arrow-indicator", "extra"].includes(col.key)
+                      ? ""
+                      : handleSort(col.key)
+                  }
                 >
                   <span className={styles["table-header-inner"]}>
                     {col.label}

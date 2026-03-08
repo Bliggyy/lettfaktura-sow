@@ -186,6 +186,7 @@
 
 .arrow-indicator, .col-extra {
   width: 2%;
+  cursor: default;
 }
 
 .col-inprice, .col-price, .col-instock {
