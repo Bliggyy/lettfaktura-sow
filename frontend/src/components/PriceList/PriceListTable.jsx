@@ -156,6 +156,23 @@ export default function PriceListTable() {
     );
   };
 
+  const filteredProducts = initialProducts
+    .filter(
+      (item) =>
+        item.id.toLowerCase().includes(articleSearch.toLowerCase()) &&
+        item.product.toLowerCase().includes(productSearch.toLowerCase()),
+    )
+    .sort((a, b) => {
+      if (!sortKey) return 0;
+      let va = a[sortKey],
+        vb = b[sortKey];
+      if (typeof va === "string") {
+        va = va.toLowerCase();
+        vb = vb.toLowerCase();
+      }
+      return sortDirection === "asc" ? (va > vb ? 1 : -1) : va < vb ? 1 : -1;
+    });
+
   return (
     <div className={styles.body}>
       <div className={styles.toolbar}>
@@ -219,7 +236,7 @@ export default function PriceListTable() {
             </tr>
           </thead>
           <tbody>
-            {initialProducts.map((row) => (
+            {filteredProducts.map((row) => (
               <tr
                 key={row.id}
                 className={styles.row}

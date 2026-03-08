@@ -99,7 +99,6 @@
 
 .table-wrapper {
   background: #ffffff;
-  border-radius: 14px;
   overflow: auto;
 }
 
@@ -136,7 +135,7 @@
   font-size: 13.5px;
   background: white;
   border: 1px solid #77d2d2;
-  border-radius: 10px;
+  border-radius: 20px;
   transition: background 0.15s;
   white-space: nowrap;
   margin-right: 1rem;
