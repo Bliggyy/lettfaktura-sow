@@ -99,7 +99,8 @@
 
 .table-wrapper {
   background: #ffffff;
-  overflow: auto;
+  overflow-y: auto;
+  height: 675px;
 }
 
 .table {
