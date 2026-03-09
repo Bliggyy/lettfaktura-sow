@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 import {
   Plus,
   Printer,
@@ -10,8 +10,10 @@ import {
   MoveRight,
 } from "lucide-react";
 import styles from "../../styles/PriceList/PriceListTable.module.css";
+import api from "../../api/axios.js";
 
 export default function PriceListTable() {
+  const [pricelistData, setPricelistData] = useState([]);
   const [articleSearch, setArticleSearch] = useState("");
   const [productSearch, setProductSearch] = useState("");
   const [sortKey, setSortKey] = useState(null);
@@ -69,190 +71,15 @@ export default function PriceListTable() {
       cssClass: "col-extra",
     },
   ];
-  const initialProducts = [
-    {
-      id: "A001",
-      product: "Wireless Headphones",
-      inPrice: 80.0,
-      price: 149.99,
-      unit: "pcs",
-      inStock: 42,
-      description:
-        "Over-ear noise cancelling Over-ear noise cancelling Over-ear noise cancelling Over-ear noise cancelling Over-ear noise cancelling Over-ear noise cancelling Over-ear noise cancelling Over-ear noise cancelling",
-    },
-    {
-      id: "A002",
-      product: "Ergonomic Chair",
-      inPrice: 210.0,
-      price: 599.0,
-      unit: "pcs",
-      inStock: 8,
-      description: "Lumbar support, adjustable",
-    },
-    {
-      id: "A003",
-      product: "Mechanical Keyboard",
-      inPrice: 55.0,
-      price: 189.5,
-      unit: "pcs",
-      inStock: 3,
-      description: "TKL, Cherry MX switches",
-    },
-    {
-      id: "A004",
-      product: "USB-C Hub 7-in-1",
-      inPrice: 18.0,
-      price: 59.99,
-      unit: "pcs",
-      inStock: 120,
-      description: "HDMI, USB3, SD card",
-    },
-    {
-      id: "A005",
-      product: "Desk LED Lamp",
-      inPrice: 22.0,
-      price: 74000.95,
-      unit: "pcs",
-      inStock: 56,
-      description: "Touch dimmer, 3 color modes",
-    },
-    {
-      id: "A006",
-      product: "Bamboo Monitor Stand",
-      inPrice: 14.0,
-      price: 45.0,
-      unit: "pcs",
-      inStock: 29,
-      description: "Natural bamboo finish",
-    },
-    {
-      id: "A007",
-      product: "Noise-Cancel Earbuds",
-      inPrice: 60.0,
-      price: 179.0,
-      unit: "pcs",
-      inStock: 18,
-      description: "IPX5, 30hr battery",
-    },
-    {
-      id: "A008",
-      product: "Standing Desk Mat",
-      inPrice: 25.0,
-      price: 79.0,
-      unit: "pcs",
-      inStock: 0,
-      description: "Anti-fatigue, beveled edge",
-    },
-    {
-      id: "A009",
-      product: "Standing Desk Mat",
-      inPrice: 25.0,
-      price: 79.0,
-      unit: "pcs",
-      inStock: 0,
-      description: "Anti-fatigue, beveled edge",
-    },
-    {
-      id: "A010",
-      product: "Standing Desk Mat",
-      inPrice: 25.0,
-      price: 79.0,
-      unit: "pcs",
-      inStock: 0,
-      description: "Anti-fatigue, beveled edge",
-    },
-    {
-      id: "A011",
-      product: "Standing Desk Mat",
-      inPrice: 25.0,
-      price: 79.0,
-      unit: "pcs",
-      inStock: 0,
-      description: "Anti-fatigue, beveled edge",
-    },
-    {
-      id: "A0012",
-      product: "Standing Desk Mat",
-      inPrice: 25.0,
-      price: 79.0,
-      unit: "pcs",
-      inStock: 0,
-      description: "Anti-fatigue, beveled edge",
-    },
-    {
-      id: "A0013",
-      product: "Standing Desk Mat",
-      inPrice: 25.0,
-      price: 79.0,
-      unit: "pcs",
-      inStock: 0,
-      description: "Anti-fatigue, beveled edge",
-    },
-    {
-      id: "A0014",
-      product: "Standing Desk Mat",
-      inPrice: 25.0,
-      price: 79.0,
-      unit: "pcs",
-      inStock: 0,
-      description: "Anti-fatigue, beveled edge",
-    },
-    {
-      id: "A015",
-      product: "Standing Desk Mat",
-      inPrice: 25.0,
-      price: 79.0,
-      unit: "pcs",
-      inStock: 0,
-      description: "Anti-fatigue, beveled edge",
-    },
-    {
-      id: "A016",
-      product: "Standing Desk Mat",
-      inPrice: 25.0,
-      price: 79.0,
-      unit: "pcs",
-      inStock: 0,
-      description: "Anti-fatigue, beveled edge",
-    },
-    {
-      id: "A017",
-      product: "Standing Desk Mat",
-      inPrice: 25.0,
-      price: 79.0,
-      unit: "pcs",
-      inStock: 0,
-      description: "Anti-fatigue, beveled edge",
-    },
-    {
-      id: "A018",
-      product: "Standing Desk Mat",
-      inPrice: 25.0,
-      price: 79.0,
-      unit: "pcs",
-      inStock: 0,
-      description: "Anti-fatigue, beveled edge",
-    },
-    {
-      id: "A019",
-      product: "Standing Desk Mat",
-      inPrice: 25.0,
-      price: 79.0,
-      unit: "pcs",
-      inStock: 0,
-      description:
-        "Anti-fatigue, beveled edge Anti-fatigue, beveled edge Anti-fatigue, beveled edge Anti-fatigue, beveled edge Anti-fatigue, beveled edge Anti-fatigue, beveled edge",
-    },
-    {
-      id: "A020",
-      product: "Standing Desk Mat",
-      inPrice: 25.0,
-      price: 79.0,
-      unit: "pcs",
-      inStock: 0,
-      description: "Anti-fatigue, beveled edge",
-    },
-  ];
+
+  useEffect(() => {
+    const fetchPricelist = async () => {
+      const response = await api.get("/api/pricelist");
+      setPricelistData(response.data);
+    };
+
+    fetchPricelist();
+  }, []);
 
   const handleSort = (key) => {
     if (sortKey === key) {
@@ -277,10 +104,10 @@ export default function PriceListTable() {
     );
   };
 
-  const filteredProducts = initialProducts
+  const filteredProducts = pricelistData
     .filter(
       (item) =>
-        item.id.toLowerCase().includes(articleSearch.toLowerCase()) &&
+        item.articleNo.toLowerCase().includes(articleSearch.toLowerCase()) &&
         item.product.toLowerCase().includes(productSearch.toLowerCase()),
     )
     .sort((a, b) => {
@@ -380,7 +207,7 @@ export default function PriceListTable() {
                 <td
                   className={`${styles["table-data"]} ${styles["col-article"]}`}
                 >
-                  {row.id}
+                  {row.articleNo}
                 </td>
                 <td className={styles["table-data"]}>{row.product}</td>
                 <td

@@ -2,7 +2,9 @@ const { Pricelist } = require("../../db/models");
 
 const getAll = async (req, res) => {
   try {
-    const pricelists = await Pricelist.findAll();
+    const pricelists = await Pricelist.findAll({
+      attributes: { exclude: ["createdAt", "updatedAt"] },
+    });
     res.status(200).json(pricelists);
   } catch (err) {
     res
@@ -13,8 +15,10 @@ const getAll = async (req, res) => {
 
 const create = async (req, res) => {
   try {
-    const { product, inPrice, price, unit, inStock, description } = req.body;
+    const { articleNo, product, inPrice, price, unit, inStock, description } =
+      req.body;
     const pricelist = await Pricelist.create({
+      articleNo,
       product,
       inPrice,
       price,
