@@ -3,6 +3,7 @@ const cors = require("cors");
 require("dotenv").config();
 const authRouter = require("../src/routes/authRoute");
 const pricelistRouter = require("../src/routes/pricelistRoute");
+const translationRouter = require("../src/routes/translationRoute");
 
 const app = express();
 const port = process.env.APP_PORT || 3000;
@@ -23,6 +24,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", authRouter);
 app.use("/api/pricelist", pricelistRouter);
+app.use("/api/translate", translationRouter);
 
 // Catch all route
 app.use((req, res, next) => {
