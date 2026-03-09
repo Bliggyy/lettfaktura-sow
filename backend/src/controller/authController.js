@@ -35,7 +35,7 @@ const logout = (req, res, next) => {
   if (token) {
     blacklistedTokens.add(token);
   }
-  res.json({ message: "Logged out successfully" });
+  res.json({ status: "Success", message: "Logged out successfully" });
 };
 
 module.exports = { login, logout };

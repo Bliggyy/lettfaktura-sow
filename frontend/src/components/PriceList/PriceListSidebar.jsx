@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useContext } from "react";
 import styles from "../../styles/PriceList/PriceListSidebar.module.css";
 import {
   File,
@@ -14,6 +14,9 @@ import {
   Import,
   LogOut,
 } from "lucide-react";
+import api from "../../api/axios.js";
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router";
 
 export default function PriceListSidebar({
   drawerOpen,
@@ -22,6 +25,17 @@ export default function PriceListSidebar({
 }) {
   const [activeItem, setActiveItem] = useState("Price List");
   const sidebarRef = useRef(null);
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    const response = await api.post("api/auth/logout");
+
+    if (response.data.status == "Success") {
+      logout();
+      navigate("/login");
+    }
+  };
 
   const sidebarItems = [
     { icon: <File color="#98fdfc" />, label: "Invoices" },
@@ -46,7 +60,11 @@ export default function PriceListSidebar({
       label: "Import/Export",
       style: "disabled",
     },
-    { icon: <LogOut color="#caeae5" />, label: "Log out" },
+    {
+      icon: <LogOut color="#caeae5" />,
+      label: "Log out",
+      action: handleLogout,
+    },
   ];
 
   useEffect(() => {
@@ -73,13 +91,14 @@ export default function PriceListSidebar({
       {sidebarItems.map((item) => {
         const isActive = activeItem === item.label;
         const isDisabled = item.style === "disabled";
+        const action = item.action || toggleDrawer;
 
         return (
           <div
             key={item.label}
             className={`${styles["nav-item"]} ${isDisabled ? styles.disabled : ""} ${isActive ? styles.active : ""}`}
             onClick={() => {
-              toggleDrawer(false);
+              action();
             }}
           >
             <div className={styles["icon-wrapper"]}>
