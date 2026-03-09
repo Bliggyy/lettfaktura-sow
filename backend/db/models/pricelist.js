@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Pricelist.init(
     {
-      articleNo: { type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4 },
+      articleNo: DataTypes.STRING,
       product: DataTypes.STRING,
       inPrice: DataTypes.DOUBLE,
       price: DataTypes.DOUBLE,
