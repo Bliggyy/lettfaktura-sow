@@ -10,32 +10,44 @@ const generateToken = (payload) => {
 };
 
 const login = (req, res, next) => {
-  const body = req.body;
+  try {
+    const body = req.body;
 
-  if (body.username !== "admin" || body.password !== "password") {
-    return res.status(400).json({
-      status: "Failed",
-      message: "Incorrect username and/or password",
+    if (body.username !== "admin" || body.password !== "password") {
+      return res.status(400).json({
+        status: "Failed",
+        message: "Incorrect username and/or password",
+      });
+    }
+
+    const token = generateToken({
+      id: body.username,
     });
+
+    return res.status(200).json({
+      status: "Success",
+      message: "User has successfully logged in",
+      token: token,
+    });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ message: "Failed to login user", error: err.message });
   }
-
-  const token = generateToken({
-    id: body.username,
-  });
-
-  return res.status(200).json({
-    status: "Success",
-    message: "User has successfully logged in",
-    token: token,
-  });
 };
 
 const logout = (req, res, next) => {
-  const token = req.headers.authorization?.split(" ")[1];
-  if (token) {
-    blacklistedTokens.add(token);
+  try {
+    const token = req.headers.authorization?.split(" ")[1];
+    if (token) {
+      blacklistedTokens.add(token);
+    }
+    res.json({ status: "Success", message: "Logged out successfully" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Failed to logout user", error: err.message });
   }
-  res.json({ status: "Success", message: "Logged out successfully" });
 };
 
 module.exports = { login, logout };
