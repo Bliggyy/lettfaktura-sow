@@ -2,13 +2,22 @@ import { useState } from "react";
 import "../../styles/Login/LoginHeader.css";
 import { useClickAway } from "@uidotdev/usehooks";
 import LanguageSelect from "../LanguageSelect";
+import { useTranslation } from "react-i18next";
+import KEYS from "../../constants/translationKeys";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const hamburgerRef = useClickAway(() => {
     setMenuOpen(false);
   });
-  const navLinks = ["Home", "Order", "Our Customers", "About us", "Contact Us"];
+  const { t } = useTranslation();
+  const navLinks = [
+    t(KEYS.LOGIN.HEADER.HOME),
+    t(KEYS.LOGIN.HEADER.ORDER),
+    t(KEYS.LOGIN.HEADER.OUR_CUSTOMERS),
+    t(KEYS.LOGIN.HEADER.ABOUT_US),
+    t(KEYS.LOGIN.HEADER.CONTACT_US),
+  ];
 
   return (
     <nav className="navbar">

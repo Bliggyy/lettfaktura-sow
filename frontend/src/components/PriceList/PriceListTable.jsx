@@ -11,6 +11,8 @@ import {
 } from "lucide-react";
 import styles from "../../styles/PriceList/PriceListTable.module.css";
 import api from "../../api/axios.js";
+import { useTranslation } from "react-i18next";
+import KEYS from "../../constants/translationKeys";
 
 export default function PriceListTable() {
   const [pricelistData, setPricelistData] = useState([]);
@@ -19,6 +21,7 @@ export default function PriceListTable() {
   const [sortKey, setSortKey] = useState(null);
   const [sortDirection, setSortDirection] = useState("asc");
   const [selectedRow, setSelectedRow] = useState(null);
+  const { t } = useTranslation();
 
   const columns = [
     {
@@ -29,38 +32,38 @@ export default function PriceListTable() {
     },
     {
       key: "id",
-      label: "Article No",
+      label: t(KEYS.PRICELIST.TABLE.ARTICLE_NO),
       sortColor: "#78e2e1",
       cssClass: "col-article",
     },
     {
       key: "product",
-      label: "Product / Service",
+      label: t(KEYS.PRICELIST.TABLE.PRODUCT),
       sortColor: "#85E196",
       cssClass: "col-product",
     },
     {
       key: "inPrice",
-      label: "In Price",
+      label: t(KEYS.PRICELIST.TABLE.IN_PRICE),
       sortColor: "#78e2e1",
       cssClass: "col-inprice",
     },
     {
       key: "price",
-      label: "Price",
+      label: t(KEYS.PRICELIST.TABLE.PRICE),
       sortColor: "#85E196",
       cssClass: "col-price",
     },
     { key: "unit", label: "Unit", sortColor: "#78e2e1", cssClass: "col-unit" },
     {
       key: "inStock",
-      label: "In Stock",
+      label: t(KEYS.PRICELIST.TABLE.IN_STOCK),
       sortColor: "#85E196",
       cssClass: "col-instock",
     },
     {
       key: "description",
-      label: "Description",
+      label: t(KEYS.PRICELIST.TABLE.DESCRIPTION),
       sortColor: "#78e2e1",
       cssClass: "col-description",
     },
@@ -128,7 +131,7 @@ export default function PriceListTable() {
           <div className={styles["search-bar"]}>
             <input
               type="text"
-              placeholder="Search Article No..."
+              placeholder={t(KEYS.PRICELIST.TABLE.ARTICLE_NO_PLACEHOLDER)}
               value={articleSearch}
               onChange={(e) => setArticleSearch(e.target.value)}
             />
@@ -139,7 +142,7 @@ export default function PriceListTable() {
           <div className={styles["search-bar"]}>
             <input
               type="text"
-              placeholder="Search Product…"
+              placeholder={t(KEYS.PRICELIST.TABLE.PRODUCT_PLACEHOLDER)}
               value={productSearch}
               onChange={(e) => setProductSearch(e.target.value)}
             />
@@ -151,15 +154,21 @@ export default function PriceListTable() {
 
         <div className={styles["button-group"]}>
           <button className={styles.button}>
-            <span className={styles["button-label"]}>New Product</span>
+            <span className={styles["button-label"]}>
+              {t(KEYS.PRICELIST.TABLE.NEW_PRODUCT)}
+            </span>
             <Plus color="#4ff1a8" strokeWidth="3" size={21} />
           </button>
           <button className={styles.button}>
-            <span className={styles["button-label"]}>Print List</span>
+            <span className={styles["button-label"]}>
+              {t(KEYS.PRICELIST.TABLE.PRINT_LIST)}
+            </span>
             <Printer color="#6bf1f2" size={21} />
           </button>
           <button className={styles.button}>
-            <span className={styles["button-label"]}>Advanced Mode</span>
+            <span className={styles["button-label"]}>
+              {t(KEYS.PRICELIST.TABLE.ADVANCED_MODE)}
+            </span>
             <Sliders color="#52cddb" size={21} />
           </button>
         </div>

@@ -78,6 +78,13 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        key: "login.form.login_button",
+        en: "Log in",
+        sv: "Logga in",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
         key: "login.form.register",
         en: "Register",
         sv: "Registrera",
@@ -188,8 +195,8 @@ module.exports = {
       },
       {
         key: "pricelist.sidebar.import",
-        en: "Import",
-        sv: "Importera",
+        en: "Import/Export",
+        sv: "Importera/Exportera",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -246,8 +253,8 @@ module.exports = {
       },
       {
         key: "pricelist.table.product",
-        en: "Product",
-        sv: "Produkt",
+        en: "Product / Service",
+        sv: "Produkt / Service",
         createdAt: new Date(),
         updatedAt: new Date(),
       },

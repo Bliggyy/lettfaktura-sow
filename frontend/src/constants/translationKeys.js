@@ -13,6 +13,7 @@ const KEYS = {
       EMAIL_PLACEHOLDER: "login.form.email_placeholder",
       PASSWORD_LABEL: "login.form.password_label",
       PASSWORD_PLACEHOLDER: "login.form.password_placeholder",
+      LOGIN_BUTTON: "login.form.login_button",
       REGISTER: "login.form.register",
       FORGOT_PASSWORD: "login.form.forgot_password",
     },
