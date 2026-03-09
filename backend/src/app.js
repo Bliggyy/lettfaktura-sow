@@ -1,10 +1,16 @@
 const express = require("express");
+const cors = require("cors");
 require("dotenv").config();
 const authRouter = require("../src/routes/authRoute");
 
 const app = express();
 const port = process.env.APP_PORT || 3000;
 
+app.use(
+  cors({
+    origin: process.env.FRONTEND_ORIGIN,
+  }),
+);
 app.use(express.json());
 
 app.get("/", (req, res) => {
