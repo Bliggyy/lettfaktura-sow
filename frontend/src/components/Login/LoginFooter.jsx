@@ -1,7 +1,14 @@
 import "../../styles/Login/LoginFooter.css";
+import { useTranslation } from "react-i18next";
+import KEYS from "../../constants/translationKeys";
 
 export default function Footer() {
-  const footerLinks = ["Home", "Order", "Contact us"];
+  const { t } = useTranslation();
+  const footerLinks = [
+    t(KEYS.LOGIN.FOOTER.HOME),
+    t(KEYS.LOGIN.FOOTER.ORDER),
+    t(KEYS.LOGIN.FOOTER.CONTACT_US),
+  ];
 
   return (
     <footer className="footer">
