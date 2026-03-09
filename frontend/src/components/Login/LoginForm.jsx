@@ -2,14 +2,31 @@ import { useState } from "react";
 import "../../styles/Login/LoginForm.css";
 import showPasswordImg from "../../assets/show-password.png";
 import hidePasswordImg from "../../assets/hide-password.png";
+import api from "../../api/axios.js";
+import { useNavigate } from "react-router";
+import { useAuth } from "../../context/AuthContext";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, toggleShowPassword] = useState(false);
+  const navigate = useNavigate();
+  const { login } = useAuth();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+
+    const response = await api.post("api/auth/login", {
+      username: email,
+      password: password,
+    });
+
+    if (response.status === "Failed") {
+      alert("User credentials are invalid");
+    }
+
+    login(email, response.token);
+    navigate("/pricelist");
   };
 
   return (
@@ -22,7 +39,7 @@ export default function LoginForm() {
           </div>
           <div className="login-input">
             <input
-              type="email"
+              type="text"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
