@@ -21,11 +21,11 @@ export default function LoginForm() {
       password: password,
     });
 
-    if (response.status === "Failed") {
+    if (response.status === "Failed" || !response.data?.token) {
       alert("User credentials are invalid");
     }
 
-    login(email, response.token);
+    login(email, response.data.token);
     navigate("/pricelist");
   };
 
