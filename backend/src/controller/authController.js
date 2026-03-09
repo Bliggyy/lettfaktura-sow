@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const tokenBlacklist = require("../middleware/tokenBlacklist");
+const blacklistedTokens = require("../middleware/blacklistedTokens");
 require("dotenv").config();
 
 const generateToken = (payload) => {
@@ -31,7 +31,7 @@ const login = (req, res, next) => {
 const logout = (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];
   if (token) {
-    tokenBlacklist.add(token);
+    blacklistedTokens.add(token);
   }
   res.json({ message: "Logged out successfully" });
 };
