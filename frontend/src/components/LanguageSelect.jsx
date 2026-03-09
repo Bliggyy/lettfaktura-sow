@@ -1,10 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/Login/LoginHeader.css";
 import { useClickAway } from "@uidotdev/usehooks";
+import api from "../api/axios.js";
+import i18n from "../i18n.js";
 
 export default function Navbar() {
   const [language, setLanguage] = useState("English");
+  const [languageKey, setLanguageKey] = useState("en");
   const [languageMenu, toggleLanguageMenu] = useState(false);
+
+  useEffect(() => {
+    const loadTranslation = async () => {
+      const response = await api.get(`/api/translate/${languageKey}`);
+      i18n.addResourceBundle(languageKey, "translation", response.data);
+      i18n.changeLanguage(languageKey);
+      localStorage.setItem("lang", languageKey);
+    };
+
+    loadTranslation();
+  }, [languageKey]);
 
   const languageRef = useClickAway(() => {
     toggleLanguageMenu(false);
@@ -12,10 +26,12 @@ export default function Navbar() {
   const supportedLanguages = [
     {
       language: "English",
+      key: "en",
       img: "https://storage.123fakturere.no/public/flags/GB.png",
     },
     {
       language: "Svenska",
+      key: "sv",
       img: "https://storage.123fakturere.no/public/flags/SE.png",
     },
   ];
@@ -39,6 +55,7 @@ export default function Navbar() {
               className="language-option"
               onClick={() => {
                 setLanguage(lang.language);
+                setLanguageKey(lang.key);
               }}
             >
               <span>{lang.language}</span>
