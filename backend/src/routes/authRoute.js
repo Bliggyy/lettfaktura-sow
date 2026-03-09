@@ -4,4 +4,4 @@ const router = require("express").Router();
 
 router.route("/login").post(login);
 
-module.export = router;
+module.exports = router;
