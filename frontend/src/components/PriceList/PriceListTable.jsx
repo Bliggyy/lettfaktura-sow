@@ -21,6 +21,7 @@ export default function PriceListTable() {
   const [sortKey, setSortKey] = useState(null);
   const [sortDirection, setSortDirection] = useState("asc");
   const [selectedRow, setSelectedRow] = useState(null);
+  const [editedRows, setEditedRows] = useState({});
   const { t } = useTranslation();
 
   const columns = [
@@ -91,6 +92,63 @@ export default function PriceListTable() {
       setSortKey(key);
       setSortDirection("asc");
     }
+  };
+
+  const handleFieldChange = (rowId, field, value) => {
+    setEditedRows((prev) => ({
+      ...prev,
+      [rowId]: {
+        ...prev[rowId],
+        [field]: value,
+      },
+    }));
+  };
+
+  const handleSave = async (rowId) => {
+    const updatedFields = editedRows[rowId];
+
+    if (!updatedFields) {
+      return;
+    }
+
+    setPricelistData((prev) =>
+      prev.map((item) =>
+        item.id === rowId ? { ...item, ...updatedFields } : item,
+      ),
+    );
+  };
+
+  const renderCell = (row, field, cssClass) => {
+    const isSelected = selectedRow === row.id;
+    const value = editedRows[row.id]?.[field] ?? row[field];
+    const isLongField = field === "description";
+
+    return (
+      <td
+        className={`${styles["table-data"]} ${cssClass ? styles[cssClass] : ""} ${isSelected ? styles["cell-selected"] : ""}`}
+      >
+        {isSelected ? (
+          isLongField ? (
+            <textarea
+              className={styles["cell-textarea"]}
+              value={value}
+              onChange={(e) => handleFieldChange(row.id, field, e.target.value)}
+              onClick={(e) => e.stopPropagation()}
+              rows={3}
+            />
+          ) : (
+            <input
+              className={styles["cell-input"]}
+              value={value}
+              onChange={(e) => handleFieldChange(row.id, field, e.target.value)}
+              onClick={(e) => e.stopPropagation()}
+            />
+          )
+        ) : (
+          value
+        )}
+      </td>
+    );
   };
 
   const getSortIcon = (key, color) => {
@@ -204,6 +262,11 @@ export default function PriceListTable() {
                 onClick={() =>
                   setSelectedRow((prev) => (prev === row.id ? null : row.id))
                 }
+                onBlur={(e) => {
+                  if (!e.currentTarget.contains(e.relatedTarget)) {
+                    handleSave(row.id);
+                  }
+                }}
               >
                 {
                   <td className={styles["row-indicator"]}>
@@ -213,31 +276,13 @@ export default function PriceListTable() {
                     />
                   </td>
                 }
-                <td
-                  className={`${styles["table-data"]} ${styles["col-article"]}`}
-                >
-                  {row.articleNo}
-                </td>
-                <td className={styles["table-data"]}>{row.product}</td>
-                <td
-                  className={`${styles["table-data"]} ${styles["col-inprice"]}`}
-                >
-                  {row.inPrice}
-                </td>
-                <td className={styles["table-data"]}>{row.price}</td>
-                <td className={`${styles["table-data"]} ${styles["col-unit"]}`}>
-                  {row.unit}
-                </td>
-                <td
-                  className={`${styles["table-data"]} ${styles["col-instock"]}`}
-                >
-                  {row.inStock}
-                </td>
-                <td
-                  className={`${styles["table-data"]} ${styles["col-description"]}`}
-                >
-                  {row.description}
-                </td>
+                {renderCell(row, "articleNo", "col-article")}
+                {renderCell(row, "product", "")}
+                {renderCell(row, "inPrice", "col-inprice")}
+                {renderCell(row, "price", "")}
+                {renderCell(row, "unit", "col-unit")}
+                {renderCell(row, "inStock", "col-instock")}
+                {renderCell(row, "description", "col-description")}
                 <td className={`${styles["column-actions"]}`}>
                   <button className={styles["more-button"]}>
                     <MoreHorizontal size={18} />
