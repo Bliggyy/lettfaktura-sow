@@ -34,6 +34,35 @@ const create = async (req, res) => {
   }
 };
 
+const edit = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { articleNo, product, inPrice, price, unit, inStock, description } =
+      req.body;
+    const pricelist = await Pricelist.findByPk(id);
+
+    if (!pricelist) {
+      return res.status(404).json({ message: "Pricelist not found" });
+    }
+
+    await pricelist.update({
+      articleNo,
+      product,
+      inPrice,
+      price,
+      unit,
+      inStock,
+      description,
+    });
+
+    res.status(200).json(pricelist);
+  } catch (err) {
+    res
+      .status(500)
+      .json({ message: "Failed to update pricelist", error: err.message });
+  }
+};
+
 const remove = async (req, res) => {
   try {
     const { id } = req.params;
@@ -53,4 +82,4 @@ const remove = async (req, res) => {
   }
 };
 
-module.exports = { getAll, create, remove };
+module.exports = { getAll, create, edit, remove };
