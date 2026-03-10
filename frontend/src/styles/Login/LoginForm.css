@@ -147,3 +147,15 @@
     color: black;
     text-decoration: solid;
 }
+
+.error-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.error {
+    color: red;
+    font-weight: 600;
+}

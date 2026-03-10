@@ -12,12 +12,18 @@ export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, toggleShowPassword] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const { login } = useAuth();
   const { t } = useTranslation();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
+    if (email !== "admin" || password !== "password") {
+      setError("Credentials are invalid");
+      return;
+    }
 
     const response = await api.post("api/auth/login", {
       username: email,
@@ -79,6 +85,11 @@ export default function LoginForm() {
         <div className="button-container">
           <button type="submit">{t(KEYS.LOGIN.FORM.LOGIN_BUTTON)}</button>
         </div>
+        {error && (
+          <div className="error-container">
+            <span className="error">{error}</span>
+          </div>
+        )}
       </form>
 
       <div className="login-footer">
