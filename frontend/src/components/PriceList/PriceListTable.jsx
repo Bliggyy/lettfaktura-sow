@@ -96,7 +96,6 @@ export default function PriceListTable() {
 
   const handleFieldChange = (rowId, field, value) => {
     setEditedRows((prev) => ({
-      ...prev,
       [rowId]: {
         ...prev[rowId],
         [field]: value,
