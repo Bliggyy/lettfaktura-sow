@@ -4,6 +4,7 @@ const getAll = async (req, res) => {
   try {
     const pricelists = await Pricelist.findAll({
       attributes: { exclude: ["createdAt", "updatedAt"] },
+      order: [["articleNo", "ASC"]],
     });
     res.status(200).json(pricelists);
   } catch (err) {

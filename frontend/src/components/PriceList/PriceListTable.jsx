@@ -115,6 +115,8 @@ export default function PriceListTable() {
         item.id === rowId ? { ...item, ...updatedFields } : item,
       ),
     );
+    await api.put(`/api/pricelist/${rowId}`, updatedFields);
+    setEditedRows({});
   };
 
   const renderCell = (row, field, cssClass) => {
