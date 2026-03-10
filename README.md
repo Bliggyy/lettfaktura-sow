@@ -1,5 +1,6 @@
 # lettfaktura-sow
-SOW for Lettfaktura
+SOW for Lettfaktura\
+You can access the website in: http://204.168.158.228/
 
 ## Routes frontend
 `/login` --> Login page\
