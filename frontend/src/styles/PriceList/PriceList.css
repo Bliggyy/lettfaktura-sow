@@ -12,3 +12,10 @@
     min-height: 0;
     overflow: hidden;
 }
+
+@media (max-height: 400px) {
+  .pricelist-container {
+    display: block; 
+    overflow: scroll;
+  }
+}
